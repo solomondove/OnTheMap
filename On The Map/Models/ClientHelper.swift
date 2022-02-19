@@ -8,6 +8,7 @@
 import Foundation
 
 class ClientHelper {
+    
     class func taskForPOSTRequest<RequestType: Encodable, ResponseType: Decodable>(url: URL, responseType: ResponseType.Type, body: RequestType, completion: @escaping (ResponseType?, Error?) -> Void) {
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
@@ -24,8 +25,13 @@ class ClientHelper {
             let decoder = JSONDecoder()
             let responseObject: ResponseType
             do {
-                let range = (5..<data.count)
-                let newData = data.subdata(in: range) /* subset response data! */
+                let newData: Data
+                if responseType == StudentLocationResponse.self {
+                    newData = data
+                } else {
+                    let range = (5..<data.count)
+                    newData = data.subdata(in: range)
+                }
                 responseObject = try decoder.decode(ResponseType.self, from: newData)
                 DispatchQueue.main.async{
                     completion(responseObject, nil)
@@ -41,7 +47,10 @@ class ClientHelper {
 //                        completion(nil, error)
 //                    }
 //                }
-                completion(nil, error)
+                DispatchQueue.main.async{
+                    completion(nil, error)
+                }
+                
             }
         }
         task.resume()
@@ -78,5 +87,21 @@ class ClientHelper {
             }
         }
         task.resume()
+    }
+    
+    @objc class func logout(){
+        print("logout")
+    }
+    
+}
+
+extension Data
+{
+    func printJSON()
+    {
+        if let JSONString = String(data: self, encoding: String.Encoding.utf8)
+        {
+            print(JSONString)
+        }
     }
 }

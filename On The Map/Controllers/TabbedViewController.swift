@@ -13,7 +13,9 @@ class TabbedViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print("in the Tabbed View")
+        
+        navigationItem.leftBarButtonItem =  UIBarButtonItem(title: "LOGOUT", style: .plain, target: self, action: #selector(logout))
+        navigationItem.rightBarButtonItems =  [UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addLocationButtonPushed)), UIBarButtonItem(image: UIImage(systemName: "arrow.clockwise"), style: .plain, target: self, action: #selector(reload))]
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -29,4 +31,33 @@ class TabbedViewController: UITableViewController {
         
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let location = appDelegate.studentLocations[(indexPath as NSIndexPath).row]
+        let app = UIApplication.shared
+        app.open(URL(string: location.mediaURL)!)
+        print("opened!")
+    }
+    
+    @objc func reload(){
+        UdacityClient.getStudentLocations(completion: self.handleReload)
+    }
+    
+    func handleReload(locations: [StudentLocation], error: Error?) {
+        if let error = error {
+            print(error)
+            return
+        }
+        print("location success!")
+       
+        appDelegate.studentLocations = locations
+        self.tableView.reloadData()
+    }
+    
+    @objc func addLocationButtonPushed() {
+        let newLocationController = self.storyboard!.instantiateViewController(withIdentifier: "AddLocationViewController")
+        self.navigationController!.pushViewController(newLocationController, animated: true)
+//        self.performSegue(withIdentifier: "presentNewLocationForm", sender: nil)
+    }
+    
 }

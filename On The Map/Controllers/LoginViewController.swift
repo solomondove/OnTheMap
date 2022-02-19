@@ -25,54 +25,33 @@ class LoginViewController: UIViewController {
     
 
     @IBAction func loginTapped(_ sender: UIButton) {
-        self.setLoggingIn(true)
+        let objects = [self.emailTextField, self.loginButton, self.passwordTextField]
+        UIViewController.setLoading(elements: objects, loading: true, indicator: self.activityIndicator)
+        
         UdacityClient.login(username: emailTextField.text ?? "", password: passwordTextField.text ?? "", completion: self.handleLoginResponse)
     }
     
     func handleLoginResponse(success: Bool, error: Error?){
-        self.setLoggingIn(false)
+        let objects = [self.emailTextField, self.loginButton, self.passwordTextField]
+        UIViewController.setLoading(elements: objects, loading: false, indicator: self.activityIndicator)
+        
         if success {
-            print("YEESS")
-            
-            UdacityClient.getStudentLocations(completion: self.handleStudentLocationResponse)
+            self.performSegue(withIdentifier: "completeLogin", sender: nil)
+            emailTextField.text = ""
+            passwordTextField.text = ""
         } else {
             print(error!)
             self.showLoginFailure()
         }
     }
     
-    func handleStudentLocationResponse(locations: [StudentLocation], error: Error?) {
-        if let error = error {
-            print(error)
-            return
-        }
-        print("location success!")
-        appDelegate.studentLocations = locations
-        self.performSegue(withIdentifier: "completeLogin", sender: nil)
-    }
     
     func showLoginFailure() {
         let alertVC = UIAlertController(title: "Login Failed", message: "Please try again!", preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        show(alertVC, sender: nil)
+        show(alertVC, sender: self)
     }
     
-    func setLoggingIn(_ loggingIn: Bool){
-        if loggingIn {
-            activityIndicator.startAnimating()
-            enableUIElements(loggingIn)
-        } else {
-            DispatchQueue.main.async {
-                self.activityIndicator.stopAnimating()
-                self.enableUIElements(loggingIn)
-            }
-        }
-    }
-    
-    func enableUIElements(_ loggingIn: Bool) {
-        emailTextField.isEnabled = !loggingIn
-        passwordTextField.isEnabled = !loggingIn
-        loginButton.isEnabled = !loggingIn
-    }
+
 }
 
