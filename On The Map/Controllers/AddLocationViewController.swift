@@ -14,7 +14,8 @@ class AddLocationViewController: UIViewController {
     @IBOutlet weak var locationTextView: UITextField!
     @IBOutlet weak var urlTextView: UITextField!
     @IBOutlet weak var submitButton: UIButton!
-    
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    let addLocationMapVC = "AddLocationMapViewController"
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -27,14 +28,17 @@ class AddLocationViewController: UIViewController {
     }
     
     @IBAction func FindLocationTapped(_ sender: UIButton) {
+        UIViewController.setLoading(elements: [submitButton], loading: true, indicator: activityIndicator)
         let geoCoder = CLGeocoder()
         geoCoder.geocodeAddressString(locationTextView.text ?? ""){(placemarks, error) in
+            UIViewController.setLoading(elements: [self.submitButton], loading: false, indicator: self.activityIndicator
+            )
             guard let placemarks = placemarks else {
                 self.showAddressFailure()
                 return
             }
             
-            let newLocationMapController = self.storyboard!.instantiateViewController(withIdentifier: "AddLocationMapViewController") as! AddLocationMapViewController
+            let newLocationMapController = self.storyboard!.instantiateViewController(withIdentifier: self.addLocationMapVC) as! AddLocationMapViewController
             newLocationMapController.mapString = self.locationTextView.text ?? ""
             newLocationMapController.longitude = placemarks.first?.location?.coordinate.longitude
             newLocationMapController.latitude = placemarks.first?.location?.coordinate.latitude

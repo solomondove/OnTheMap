@@ -221,17 +221,23 @@
                                     </button>
                                 </subviews>
                             </stackView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="dKx-3R-KlF">
+                                <rect key="frame" x="197" y="545.5" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="oDp-g4-g3U"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="AyV-pq-rMd" firstAttribute="leading" secondItem="oDp-g4-g3U" secondAttribute="leading" constant="30" id="3gC-rv-KRI"/>
+                            <constraint firstItem="dKx-3R-KlF" firstAttribute="bottom" secondItem="AyV-pq-rMd" secondAttribute="bottom" constant="40" id="DfD-81-90J"/>
+                            <constraint firstItem="dKx-3R-KlF" firstAttribute="centerX" secondItem="AyV-pq-rMd" secondAttribute="centerX" id="c6q-1L-Oty"/>
                             <constraint firstItem="oDp-g4-g3U" firstAttribute="trailing" secondItem="AyV-pq-rMd" secondAttribute="trailing" constant="30" id="vnc-dG-goN"/>
                             <constraint firstItem="AyV-pq-rMd" firstAttribute="centerY" secondItem="oDp-g4-g3U" secondAttribute="centerY" id="yhV-kv-k5s"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="1ob-Hi-sLI"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="dKx-3R-KlF" id="6Qd-LZ-5gk"/>
                         <outlet property="locationTextView" destination="YjV-au-2rj" id="7yZ-xw-kdo"/>
                         <outlet property="submitButton" destination="bd6-zW-Z7l" id="yv6-2Y-Ckp"/>
                         <outlet property="urlTextView" destination="XJZ-CK-717" id="KZ9-3k-fEd"/>
@@ -239,7 +245,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="tuh-Re-afJ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3774" y="-309"/>
+            <point key="canvasLocation" x="3773.913043478261" y="-309.375"/>
         </scene>
         <!--Add Location Map View Controller-->
         <scene sceneID="qbc-01-tKg">

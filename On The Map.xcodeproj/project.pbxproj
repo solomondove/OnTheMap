@@ -84,11 +84,10 @@
 			children = (
 				80FAACB527BDDE2C00262EB4 /* AppDelegate.swift */,
 				80FAACB727BDDE2C00262EB4 /* SceneDelegate.swift */,
-				80FAACC327BDDE3100262EB4 /* Info.plist */,
 				80FAACCC27BDDEF400262EB4 /* View */,
 				80FAACC927BDDE5500262EB4 /* Controllers */,
 				80FAACCB27BDDED800262EB4 /* Models */,
-				80FAACCA27BDDE8700262EB4 /* Assets */,
+				80FAACCA27BDDE8700262EB4 /* resources */,
 			);
 			path = "On The Map";
 			sourceTree = "<group>";
@@ -99,19 +98,20 @@
 				80FAACB927BDDE2C00262EB4 /* LoginViewController.swift */,
 				80FAACDA27BE12FD00262EB4 /* MapViewController.swift */,
 				80FAACDC27BE131200262EB4 /* TabbedViewController.swift */,
-				80FAACE227BF636100262EB4 /* UIViewControllerExtension.swift */,
 				80FAACE427C02F0800262EB4 /* AddLocationViewController.swift */,
 				80FAACE627C05A9E00262EB4 /* AddLocationMapViewController.swift */,
+				80FAACEC27C1FBEE00262EB4 /* Extensions */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
 		};
-		80FAACCA27BDDE8700262EB4 /* Assets */ = {
+		80FAACCA27BDDE8700262EB4 /* resources */ = {
 			isa = PBXGroup;
 			children = (
+				80FAACC327BDDE3100262EB4 /* Info.plist */,
 				80FAACBE27BDDE3100262EB4 /* Assets.xcassets */,
 			);
-			path = Assets;
+			path = resources;
 			sourceTree = "<group>";
 		};
 		80FAACCB27BDDED800262EB4 /* Models */ = {
@@ -119,7 +119,9 @@
 			children = (
 				80FAACCD27BDEC1400262EB4 /* UdacityClient.swift */,
 				80FAACD627BDFA7200262EB4 /* ClientHelper.swift */,
-				80FAACD327BDEFA900262EB4 /* Data */,
+				80FAACDE27BE170A00262EB4 /* StudentLocation.swift */,
+				80FAACED27C1FC3000262EB4 /* Responses */,
+				80FAACD327BDEFA900262EB4 /* Requests */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -133,17 +135,31 @@
 			path = View;
 			sourceTree = "<group>";
 		};
-		80FAACD327BDEFA900262EB4 /* Data */ = {
+		80FAACD327BDEFA900262EB4 /* Requests */ = {
 			isa = PBXGroup;
 			children = (
 				80FAACD827BDFF2300262EB4 /* UdacitySessionRequest.swift */,
-				80FAACD427BDEFD900262EB4 /* UdacitySessionResponse.swift */,
-				80FAACDE27BE170A00262EB4 /* StudentLocation.swift */,
-				80FAACE027BE1A3200262EB4 /* StudentLocationsResponse.swift */,
 				80FAACE827C06AE100262EB4 /* StudentLocationRequest.swift */,
+			);
+			path = Requests;
+			sourceTree = "<group>";
+		};
+		80FAACEC27C1FBEE00262EB4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				80FAACE227BF636100262EB4 /* UIViewControllerExtension.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		80FAACED27C1FC3000262EB4 /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				80FAACE027BE1A3200262EB4 /* StudentLocationsResponse.swift */,
+				80FAACD427BDEFD900262EB4 /* UdacitySessionResponse.swift */,
 				80FAACEA27C06C3900262EB4 /* StudentLocationResponse.swift */,
 			);
-			path = Data;
+			path = Responses;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
