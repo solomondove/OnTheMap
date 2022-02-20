@@ -23,6 +23,7 @@ class AddLocationMapViewController: UIViewController, MKMapViewDelegate {
         mapView.delegate = self
         mapView.centerCoordinate = CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
        placeLocation()
+        navigationItem.title = "Add Location"
     }
     
     func placeLocation() {

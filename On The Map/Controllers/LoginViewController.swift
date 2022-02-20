@@ -18,9 +18,10 @@ class LoginViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view.
+
         emailTextField.text = ""
         passwordTextField.text = ""
+        logoImageView.image = UIImage(named: "Pin Picture")
     }
     
 
@@ -52,6 +53,9 @@ class LoginViewController: UIViewController {
         show(alertVC, sender: self)
     }
     
-
+    @IBAction func signUpButtonPressed(_ sender: UIButton) {
+        let app = UIApplication.shared
+        app.open(URL(string: "https://www.google.com/url?q=https://www.udacity.com/account/auth%23!/signup&sa=D&source=editors&ust=1645076831046014&usg=AOvVaw3wxYvvktSfiRUAxjNNlOoQ")!)
+    }
 }
 

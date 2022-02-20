@@ -11,7 +11,7 @@ import MapKit
 
 class MapViewController: UIViewController, MKMapViewDelegate {
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    let initialLocation = CLLocation(latitude: 37.7749, longitude: 122.4194)
+
     
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet private var mapView: MKMapView!
@@ -27,15 +27,9 @@ class MapViewController: UIViewController, MKMapViewDelegate {
       
         navigationItem.leftBarButtonItem =  UIBarButtonItem(title: "LOGOUT", style: .plain, target: self, action: #selector(logout))
         navigationItem.rightBarButtonItems =  [UIBarButtonItem(image: UIImage(systemName: "plus"), style: .plain, target: self, action: #selector(addLocationButtonPushed)), UIBarButtonItem(image: UIImage(systemName: "arrow.clockwise"), style: .plain, target: self, action: #selector(reload))]
-        
-        
+        navigationItem.title = "On The Map"
     }
     
-        // MARK: - MKMapViewDelegate
-
-        // Here we create a view with a "right callout accessory view". You might choose to look into other
-        // decoration alternatives. Notice the similarity between this method and the cellForRowAtIndexPath
-        // method in TableViewDataSource.
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         let reuseId = "pin"
@@ -109,8 +103,4 @@ class MapViewController: UIViewController, MKMapViewDelegate {
         self.mapView.addAnnotations(annotations)
     }
     
-    @objc func addLocationButtonPushed() {
-        let newLocationController = self.storyboard!.instantiateViewController(withIdentifier: "AddLocationViewController")
-        self.navigationController!.pushViewController(newLocationController, animated: true)
-    }
 }

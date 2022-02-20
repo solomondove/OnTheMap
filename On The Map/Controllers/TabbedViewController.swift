@@ -53,11 +53,4 @@ class TabbedViewController: UITableViewController {
         appDelegate.studentLocations = locations
         self.tableView.reloadData()
     }
-    
-    @objc func addLocationButtonPushed() {
-        let newLocationController = self.storyboard!.instantiateViewController(withIdentifier: "AddLocationViewController")
-        self.navigationController!.pushViewController(newLocationController, animated: true)
-//        self.performSegue(withIdentifier: "presentNewLocationForm", sender: nil)
-    }
-    
 }

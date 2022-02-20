@@ -37,18 +37,12 @@ extension UIViewController {
         
     }
     @objc func cancelNewLocation() {
-//        for controller in self.navigationController!.viewControllers as Array {
-//            if controller.isKind(of: MapViewController.self) {
-//                _ = self.navigationController!.popToViewController(controller, animated: true)
-//                break
-//            } else if controller.isKind(of: TabbedViewController.self) {
-//                _ = self.navigationController!.popToViewController(controller, animated: true)
-//                break
-//            }
-//        }
-
         self.navigationController!.popToRootViewController(animated: true)
         self.tabBarController?.tabBar.isHidden = false
     }
 
+    @objc func addLocationButtonPushed() {
+        let newLocationController = self.storyboard!.instantiateViewController(withIdentifier: "AddLocationViewController")
+        self.navigationController!.pushViewController(newLocationController, animated: true)
+    }
 }

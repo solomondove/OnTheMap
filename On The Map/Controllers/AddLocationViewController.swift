@@ -22,6 +22,8 @@ class AddLocationViewController: UIViewController {
         urlTextView.text = ""
         tabBarController?.tabBar.isHidden = true
         navigationItem.leftBarButtonItem =  UIBarButtonItem(title: "CANCEL", style: .plain, target: self, action: #selector(cancelNewLocation))
+        navigationItem.title = "Add Location"
+        
     }
     
     @IBAction func FindLocationTapped(_ sender: UIButton) {
@@ -44,6 +46,6 @@ class AddLocationViewController: UIViewController {
     func showAddressFailure() {
         let alertVC = UIAlertController(title: "Address Failed", message: "Please try again!", preferredStyle: .alert)
         alertVC.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-        show(alertVC, sender: self)
+        self.present(alertVC, animated: true, completion: nil)
     }
 }

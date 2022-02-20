@@ -109,9 +109,7 @@
 		80FAACCA27BDDE8700262EB4 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				80FAACBB27BDDE2C00262EB4 /* Main.storyboard */,
 				80FAACBE27BDDE3100262EB4 /* Assets.xcassets */,
-				80FAACC027BDDE3100262EB4 /* LaunchScreen.storyboard */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
@@ -129,6 +127,8 @@
 		80FAACCC27BDDEF400262EB4 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				80FAACBB27BDDE2C00262EB4 /* Main.storyboard */,
+				80FAACC027BDDE3100262EB4 /* LaunchScreen.storyboard */,
 			);
 			path = View;
 			sourceTree = "<group>";
